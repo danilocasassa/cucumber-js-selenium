@@ -1,0 +1,29 @@
+{
+  "name": "cucumber-js-selenium",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "generate-report": "node createReport.js",
+    "cucumber-run": "./node_modules/.bin/cucumber-js --require-module @babel/register --require-module @babel/polyfill ./features/ -f json:reports/cucumber_report.json -f node_modules/cucumber-pretty",
+    "copiar_qas_chrome": "cp ./features/config/env/.env_qas_chrome .env",
+    "copiar_stg_chrome": "cp ./features/config/env/.env_qas_chrome .env",
+    "test_qas": "yarn copiar_qas_chrome && yarn cucumber-run && yarn generate-report",
+    "test_qas_headed": "yarn copiar_qas_chrome && yarn cucumber-run --headed && yarn generate-report --showReport"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.10.1",
+    "@babel/core": "^7.10.2",
+    "@babel/node": "^7.10.1",
+    "@babel/polyfill": "^7.10.1",
+    "@babel/preset-env": "^7.10.2",
+    "chromedriver": "^83.0.0",
+    "cucumber": "^6.0.5",
+    "cucumber-html-reporter": "^5.2.0",
+    "cucumber-pretty": "^6.0.0",
+    "dotenv": "^8.2.0",
+    "selenium-webdriver": "^4.0.0-alpha.7"
+  }
+}
